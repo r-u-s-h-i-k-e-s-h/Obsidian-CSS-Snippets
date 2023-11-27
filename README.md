@@ -2,6 +2,10 @@
 
 ObsidianMD CSS Snippets Collection: Enhance Your Note-Taking Experience
 
+<img src="https://i.imgur.com/cPa054W.png" alt="snippets collection">
+
+![]()
+
 Table of Contents:
 
 1. [◩ Introduction](#-Introduction)
