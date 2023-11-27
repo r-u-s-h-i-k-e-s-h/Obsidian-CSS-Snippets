@@ -4,12 +4,12 @@ ObsidianMD CSS Snippets Collection: Enhance Your Note-Taking Experience
 
 Table of Contents:
 
-1. [◩ Introduction](#◩-Introduction)
-2. [◩ Compatibility](#◩-Compatibility)
-3. [◩ How to Use](#◩-How-to-Use)
-4. [◩ Included Snippets](#◩-Included-Snippets)
-5. [◩ Credits](#◩-Credits)
-6. [◩ License](#◩-License)
+1. [◩ Introduction](#-Introduction)
+2. [◩ Compatibility](#-Compatibility)
+3. [◩ How to Use](#-How-to-Use)
+4. [◩ Included Snippets](#-Included-Snippets)
+5. [◩ Credits](#-Credits)
+6. [◩ License](#-License)
 
 ## ◩ Introduction 
 
