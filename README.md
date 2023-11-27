@@ -29,7 +29,7 @@ These CSS snippets are tested and compatible with Obsidian version **1.4.16** wi
 **Two Options:**
 
 1. **Download Entire Vault:**
-[Download the vault](https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-snippets/archive/refs/heads/collection.zip), and open it in Obsidian via **` Open another vault -> Open folder as vault - > Reload the vault `**
+[Download the vault](https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-Snippets/archive/refs/heads/Collection.zip), and open it in Obsidian via **` Open another vault -> Open folder as vault - > Reload the vault `**
 
 2. **Individual Snippets:**
 Alternatively, for a more granular approach, open the links below to view and copy each individual CSS snippet.
