@@ -152,7 +152,7 @@ Alternatively, for a more granular approach, open the links below to view and co
 
 A special thanks to the creators of the original snippets and the ObsidianMD community for sharing their expertise and contributions.
 
-- 🪁 **sailKite** (Email: sailKitev@gmail.com)
+- 🪁 **sailKite** (Email: sailKitev@gmail.com | [GitHub profile](https://github.com/sailKiteV) )
 - 🔥 **FireIsGood** ([Buy coffee for FireIsGood](https://ko-fi.com/fireisgood))
 - 💎 **kneecaps** ([GitHub profile](https://github.com/7368697661))
 - 😎 **rushi** (Let me have some credit for minimal tweaks 😁)
