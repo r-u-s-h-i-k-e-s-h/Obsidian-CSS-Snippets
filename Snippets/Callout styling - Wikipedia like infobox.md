@@ -8,6 +8,7 @@
 - source:: https://gist.github.com/chuckharmston/3ea52371c399377bad1e3adbe46024a9
 
 ---
+> _Doesn't work with Minimal theme_
 
 cover:: ![](https://i.imgur.com/iiY9lqW.png)
 
