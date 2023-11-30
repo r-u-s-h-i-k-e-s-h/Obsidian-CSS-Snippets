@@ -60,6 +60,7 @@ div.view-header,
   background-color: transparent !important;
 }
 
+/*
 body:not(.no-svg-replace) svg.right-triangle,
 body:not(.no-svg-replace)
   .markdown-preview-view
@@ -67,6 +68,7 @@ body:not(.no-svg-replace)
   > svg.right-triangle {
   background-color: var(--text-muted);
 }
+*/
 
 body:not(.no-svg-replace) svg.right-triangle,
 body:not(.no-svg-replace) span[title="Fold line"]:after,
