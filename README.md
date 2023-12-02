@@ -65,7 +65,7 @@ Alternatively, for a more granular approach, open the links below to view and co
  - [Callout styling - Power callouts](Snippets/Callout%20styling%20-%20Power%20callouts.md)
  - [Callout styling - Quote callout](Snippets/Callout%20styling%20-%20Quote%20callout.md)
  - [Callout styling - Scroller callout](Snippets/Callout%20styling%20-%20Scroller%20callout.md)
- - [Callout styling - Sleek callout (Snippets/AnuPpuccin theme)](Snippets/Callout%20styling%20-%20Sleek%20callout%20(Snippets/AnuPpuccin%20theme).md)
+ - [Callout styling - Sleek callout (AnuPpuccin theme)](Snippets/Callout%20styling%20-%20Sleek%20callout%20(AnuPpuccin%20theme).md)
  - [Callout styling - Tabbed callout](Snippets/Callout%20styling%20-%20Tabbed%20callout.md)
  - [Callout styling - Theorem callout](Snippets/Callout%20styling%20-%20Theorem%20callout.md)
  - [Callout styling - Timeline callout](Snippets/Callout%20styling%20-%20Timeline%20callout.md)
@@ -81,7 +81,7 @@ Alternatively, for a more granular approach, open the links below to view and co
  - [Checkboxes - Origami theme](Snippets/Checkboxes%20-%20Origami%20theme.md)
  - [Checkboxes - Priority checkboxes](Snippets/Checkboxes%20-%20Priority%20checkboxes.md)
  - [Checkboxes - Progress bar checkboxes](Snippets/Checkboxes%20-%20Progress%20bar%20checkboxes.md)
- - [Checkboxes - SlRvb's checkboxes (Snippets/ITS theme)](Snippets/Checkboxes%20-%20SlRvb's%20checkboxes%20(Snippets/ITS%20theme).md)
+ - [Checkboxes - SlRvb's checkboxes (ITS theme)](Snippets/Checkboxes%20-%20SlRvb's%20checkboxes%20(ITS%20theme).md)
  - [Code block styling 01](Snippets/Code%20block%20styling%2001.md)
  - [Code block styling 02](Snippets/Code%20block%20styling%2002.md)
  - [Collapsible image caption callout](Snippets/Collapsible%20image%20caption%20callout.md)
@@ -127,6 +127,7 @@ Alternatively, for a more granular approach, open the links below to view and co
  - [Properties into two columns](Snippets/Properties%20into%20two%20columns.md)
  - [Properties on hover](Snippets/Properties%20on%20hover.md)
  - [Safari tabs](Snippets/Safari%20tabs.md)
+ - [Show note header on hover](Snippets/Show%20note%20header%20on%20hover.md)
  - [Sidenote callout 01](Snippets/Sidenote%20callout%2001.md)
  - [Sidenote callout 02](Snippets/Sidenote%20callout%2002.md)
  - [Spoiler text](Snippets/Spoiler%20text.md)
@@ -142,7 +143,7 @@ Alternatively, for a more granular approach, open the links below to view and co
  - [Tooltip styling](Snippets/Tooltip%20styling.md)
  - [Unordered list styling 01](Snippets/Unordered%20list%20styling%2001.md)
  - [Unordered list styling 02](Snippets/Unordered%20list%20styling%2002.md)
- - [Vertical label arrangement](Snippets/Vertical%20label%20arrangement.md))
+ - [Vertical label arrangement](Snippets/Vertical%20label%20arrangement.md)
 
 </details>
 
