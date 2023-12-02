@@ -1,10 +1,10 @@
-↪[[Collection]]
+↪[Collection](Collection.md)
 # Show note header on hover
 
 ___
 
-author:: sailKite
-source:: https://discord.com/channels/686053708261228577/702656734631821413/1170914511788724254
+- author:: sailKite
+- source:: https://discord.com/channels/686053708261228577/702656734631821413/1170914511788724254
 
 ___
 
