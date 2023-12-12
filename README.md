@@ -169,3 +169,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Happy theming and customizing your ObsidianMD experience!
 
 []~(￣▽￣)~*
+
+🙏 **Note:** Most of the snippets in this collection are contributions from talented authors like kneecaps, sailKite, FireIsGood, and others. Please be aware of this before considering any donations to me.
