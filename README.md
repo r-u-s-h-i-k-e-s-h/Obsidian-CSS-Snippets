@@ -4,8 +4,6 @@ ObsidianMD CSS Snippets Collection: Enhance Your Note-Taking Experience
 
 <img src="https://i.imgur.com/cPa054W.png" alt="snippets collection">
 
-![]()
-
 Table of Contents:
 
 1. [◩ Introduction](#-Introduction)
@@ -170,4 +168,3 @@ Happy theming and customizing your ObsidianMD experience!
 
 []~(￣▽￣)~*
 
-🙏 **Note:** Most of the snippets in this collection are contributions from talented authors like kneecaps, sailKite, FireIsGood, and others. Please be aware of this before considering any donations to me.
