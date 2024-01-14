@@ -20,10 +20,12 @@ source: https://discord.com/channels/686053708261228577/702656734631821413/11442
 .metadata-properties-title {
   transition: 500ms;
   opacity: 0.2;
+  pointer-events: none;
 }
 .metadata-container:hover .metadata-properties-title {
   opacity: 1;
   color: var(--text-accent);
+  pointer-events: auto;
 }
 
 .metadata-content {
@@ -31,10 +33,12 @@ source: https://discord.com/channels/686053708261228577/702656734631821413/11442
   opacity: 0;
   height: 0;
   margin-bottom: -1.8em;
+  pointer-events: none;
 }
 .metadata-container:hover .metadata-content {
   opacity: 1;
   height: auto;
   margin-bottom: 0.5em;
+  pointer-events: auto;
 }
 ```
