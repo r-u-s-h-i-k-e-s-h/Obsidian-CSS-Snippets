@@ -55,6 +55,7 @@ body:not(.pt-disable-callout-styling) {
       min-height: 36px;
       border: 2px solid;
       border-radius: var(--radius-m);
+      background: rgba(var(--callout-color), 0.05);
 
       &:empty + .callout-content {
         padding: var(--size-4-1) var(--size-4-3);
@@ -85,11 +86,12 @@ body:not(.pt-disable-callout-styling) {
     .callout-content {
       padding: var(--size-4-5) var(--size-4-3) var(--size-4-1) var(--size-4-3);
       margin-top: -16px;
-      border-right: 1px solid;
-      border-bottom: 1px solid;
-      border-left: 1px solid;
+      border-right: 1px solid rgba(var(--callout-color));
+      border-bottom: 1px solid rgba(var(--callout-color));
+      border-left: 1px solid rgba(var(--callout-color));
       border-bottom-right-radius: var(--radius-m);
       border-bottom-left-radius: var(--radius-m);
+      background: rgba(var(--callout-color), 0.05);
     }
 
     /* Type 1 */
