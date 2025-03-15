@@ -1,0 +1,781 @@
+/* 
+	Square UI
+	This modified UI focuses on ergonomics and space-usage.
+	Style Settings can be used to precisely control the size of elements.
+	Features:
+	- No more padding dead-zones. Anywhere. 
+	- Sidebar tabs, and the buttons on the sidebars, fill the full space given.
+	- Right sidebar button functions as a fourth titlebar button. (Modifiable)
+	- Left sidebar button always anchored to top-left. (Modifiable)
+	- Much easier to interact with note title; and buttons there are also larger.
+	- Optional "Stack Tabs" mode - this literally stacks the tabs vertically on the window.
+		- This can be desirable for users with lots of tabs - you move your eyes less, and the tabs' titles won't be compressed by their density.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+.workspace-tabs.mod-top-right-space {
+  background: var(--tab-container-background);
+}
+
+body {
+  --scrollBarSize: 20px;
+  --handleSize: 20px;
+  --editorSize: 800px;
+  --sidebarTabHeight: 40px;
+  --sidebarDashboardHeight: 40px;
+  --editorTabHeight: 40px;
+  --editorTabHeightStack: 40px;
+  --editorStackWidth: 200px;
+  --dragSpaceHeight: 20px;
+  --ribbonWidth: 40px;
+  --ribbonButtonHeight: 40px;
+  --editorDashboardHeight: 40px;
+  --editorTabHeight: 40px;
+  --editorDashboardButtonsWidth: 20%;
+  --rightFrameSetTo: calc(var(--titlebarButtonWidth) * 4);
+  --titlebarButtonWidth: 40px;
+  --titlebarButtonHeight: 40px;
+}
+
+body:is(.outsideSidebar_RBA, .insideSidebar_RBA) {
+  --rightFrameSetTo: calc(var(--titlebarButtonWidth) * 3);
+}
+
+body {
+  --frame-right-space: var(--rightFrameSetTo);
+  --handleSize: 0px;
+}
+
+body.stackTabs:not(.tabTooltips) .tooltip {
+  display: none;
+}
+
+/* @settings
+name: Square UI
+id: SquareUI
+settings:
+	- 
+		id: this-is-a-heading------------------------------------------------------------------------------------------------------
+		title: Shared UI Components (Scrollbar, Drag bars, Resize bars, Ribbon...)
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: ribbon-width
+		title: Ribbon Width
+		description: The width of the space occupied by the ribbon.
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: ribbonButtonHeight
+		title: Ribbon Button Height
+		description: The height of the ribbon buttons.
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: disableFastClose
+		title: Disable Sidebar Fast Close
+		description: Micro Mike uses a hack to make sidebars disappear immediately upon pressing the button. This disables that.
+		type: class-toggle
+	-
+		id: disableExtendRightSidebarMinimum
+		title: Disable Extended Right Sidebar Minimum Width
+		description: With the right sidebar button now on the title bar, Micro Mike makes the right sidebar longer to compensate - if you want.
+		type: class-toggle
+		default: true
+	- 
+		id: this-is-a-heading------------------------------------------------------------------------------------------------------
+		title: Text Editor
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: editorDashboardHeight
+		title: Editor Dashboard Height
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	- 
+		id: this-is-a-heading------------------------------------------------------------------------------------------------------
+		title: Tabs & Sidebars
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: stackTabs
+		title: Stack the tabs
+		description: The tabs will be stacked.
+		type: class-toggle
+		default: true
+	-
+		id: tabTooltips
+		title: Reenable Tab Tooltips
+		description: Tab tooltips are disabled for stacked tab mode - unless reenabled here.
+		type: class-toggle
+	-
+		id: disableXButtons
+		title: Disable Tab X Buttons
+		description: Did you know you can close tabs by middle clicking on them?
+		type: class-toggle
+	-
+		id: tabTitleWordWrap
+		title: Tab Title Word Wrap
+		description: If there is space and the title is long enough, the text will now overflow onto more lines.
+		type: class-toggle
+	-
+		id: tabTitleCentered
+		title: Center Tab Titles
+		type: class-toggle
+	-
+		id: editorStackWidth
+		title: Stack Tabs Width
+		description: The width of the stacked tabs. 
+		type: variable-number-slider
+		default: 200
+		min: 120
+		max: 300
+		step: 5
+		format: px
+	-
+		id: editorTabHeightStack
+		title: Editor Stack Tab Height
+		description: Tab Height 
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: editorTabHeight
+		title: Editor (Non-Stack) Tab Height
+		description: Tab Height 
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: sidebarTabHeight
+		title: Sidebar Tab Height
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: sidebarDashboardHeight
+		title: Sidebar Dashboard Height
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 5
+		format: px
+	-
+		id: cornerDragLocation
+		title: Corner Drag Location
+		description: This creates a space at the left corner where the window can be dragged.
+		type: class-toggle
+	-
+		id: editorDragSpace
+		title: Editor Drag Space
+		description: This creates a space at the right corner in editor tabs where the window can be dragged.
+		type: class-toggle
+	-
+		id: leftAlignedLeftSidebarButtonDisable
+		title: Disable Left Sidebar Button Corner Alignment
+		description: This allows you to disable the left corner positioning of the left sidebar button.
+		type: class-toggle
+	-
+		id: rightSidebarButtonAlignment
+		title: Right Sidebar Button Alignment
+		description: "This determines the alignment of the sidebar button.\n **titlebarAlign**: Acts as a fourth button on the titlebar.\n **outsideSidebar**: Creates a button on the outside of the sidebar to the right - this is the default behavior.\n **insideSidebar**: Creates a button inside the sidebar to the left."
+		type: class-select
+		allowEmpty: false
+		default: titlebarAlign_RBA
+		options:
+			- titlebarAlign_RBA
+			- outsideSidebar_RBA
+			- insideSidebar_RBA
+	- 
+		id: this-is-a-heading ---------------------------------------------------------------------------------------
+		title: Title Bar
+		type: heading
+		level: 2
+		collapsed: true
+	- 
+		id: dragSpaceHeight
+		title: Drag Space Height
+		type: variable-number-slider
+		default: 20
+		min: 0
+		max: 80
+		step: 5
+		format: px
+	-
+		id: disableRightTitlebarOffset
+		title: Disable Titlebar Spacing
+		description: Space is made for the titlebar buttons. If the drag space height is high enough, then it doesn't overlap even without this.
+		type: class-toggle
+	-
+		id: titlebarButtonWidth
+		title: Titlebar Button Width
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 2
+		format: px
+	-
+		id: titlebarButtonHeight
+		title: Titlebar Button Height
+		type: variable-number-slider
+		default: 40
+		min: 20
+		max: 80
+		step: 2
+		format: px
+*/
+body {
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+  --radius-xl: 0px;
+  --tab-radius-active: 0px;
+  --input-radius: 0px;
+  --button-radius: 0px;
+}
+
+body {
+  --header-height: var(--sidebarTabHeight);
+}
+
+.nav-files-container, .tag-container {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+
+.workspace-split.mod-left-split .view-content, .workspace-split.mod-right-split .view-content {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+
+body {
+  --header-height: var(--editorDashboardHeight);
+}
+
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: var(--editorDashboardHeight);
+  min-height: var(--editorDashboardHeight);
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header div {
+  width: var(--editorDashboardButtonsWidth);
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header div > :is(button, a, div) {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  flex-grow: 1;
+  height: var(--editorDashboardHeight);
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header div .view-header-title-parent {
+  display: none;
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header div .view-header-title {
+  display: inline-block;
+  min-width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header div .view-header-title::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+:is(.workspace-leaf-content[data-type=markdown], .workspace-leaf-content[data-type=empty]) .view-header .view-header-title-container::after {
+  height: 0px;
+  width: 0px;
+  display: none;
+}
+
+body {
+  --ribbon-width: 40px;
+}
+
+.workspace-ribbon.mod-left {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  flex-basis: var(--ribbon-width);
+  margin-top: var(--ribbonButtonHeight);
+}
+.workspace-ribbon.mod-left .side-dock-settings, .workspace-ribbon.mod-left .side-dock-actions {
+  gap: 0px;
+}
+.workspace-ribbon.mod-left .clickable-icon {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: var(--ribbon-width);
+  height: var(--ribbonButtonHeight);
+}
+.workspace-ribbon.mod-left .sidebar-toggle-button.mod-left {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+
+:is(.mod-left-split, .workspace-split.mod-root) .sidebar-toggle-button.mod-left,
+:is(.mod-left-split, .workspace-split.mod-root) .sidebar-toggle-button.mod-left .clickable-icon {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: 40px;
+  height: var(--sidebarTabHeight);
+}
+
+:is(.mod-left-split, .workspace-split.mod-root) .sidebar-toggle-button.mod-left {
+  margin-top: var(--dragSpaceHeight);
+}
+
+body:not(.leftAlignedLeftSidebarButtonDisable) .sidebar-toggle-button.mod-left {
+  order: -1;
+}
+
+body:not(.leftAlignedLeftSidebarButtonDisable).cornerDragLocation .mod-left-split .workspace-tab-header-container-inner {
+  margin-left: 0px;
+}
+body:not(.leftAlignedLeftSidebarButtonDisable).cornerDragLocation .sidebar-toggle-button.mod-left {
+  order: -1;
+  margin-left: 40px;
+}
+
+.workspace-tab-header-container .sidebar-toggle-button.mod-right {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: var(--titlebarButtonHeight);
+  width: var(--titlebarButtonWidth);
+}
+.workspace-tab-header-container .sidebar-toggle-button.mod-right .clickable-icon {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: var(--titlebarButtonWidth);
+  height: var(--titlebarButtonHeight);
+}
+
+body:not(.outsideSidebar_RBA):not(.insideSidebar_RBA) .workspace-tab-header-container .sidebar-toggle-button.mod-right {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  position: fixed;
+  right: calc(var(--titlebarButtonWidth) * 3);
+  z-index: 20;
+}
+
+:is(.outsideSidebar_RBA, .insideSidebar_RBA) .workspace-tab-header-container .sidebar-toggle-button.mod-right {
+  margin-top: var(--dragSpaceHeight);
+  height: var(--editorTabHeight);
+  width: var(--editorTabHeight);
+}
+:is(.outsideSidebar_RBA, .insideSidebar_RBA) .workspace-tab-header-container .sidebar-toggle-button.mod-right .clickable-icon {
+  width: var(--editorTabHeight);
+  height: var(--editorTabHeight);
+}
+
+.insideSidebar_RBA:has(> * > * > * > .mod-right-split:not(.is-sidedock-collapsed)) .workspace-tabs {
+  overflow: visible;
+}
+.insideSidebar_RBA:has(> * > * > * > .mod-right-split:not(.is-sidedock-collapsed)) .workspace-tabs .workspace-tab-header-container .sidebar-toggle-button.mod-right {
+  position: absolute;
+  right: calc(0px - var(--handleSize) - 40px);
+  height: var(--sidebarTabHeight);
+  width: 40px;
+  z-index: 10;
+}
+.insideSidebar_RBA:has(> * > * > * > .mod-right-split:not(.is-sidedock-collapsed)) .workspace-tabs .workspace-tab-header-container .sidebar-toggle-button.mod-right .clickable-icon {
+  width: 40px;
+  height: var(--sidebarTabHeight);
+}
+.insideSidebar_RBA:has(> * > * > * > .mod-right-split:not(.is-sidedock-collapsed)) .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
+  margin-left: 40px;
+}
+
+body.is-frameless:not(.is-hidden-frameless):not(.is-fullscreen) .workspace-tab-header-container .sidebar-toggle-button.mod-right {
+  top: 0px;
+}
+
+.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
+  margin-right: var(--frame-right-space);
+  padding-right: 0px;
+}
+
+:is(.mod-windows, .mod-linux).stackTabs {
+  --frame-right-space: 0px;
+}
+
+html .mod-windows .mod-root,
+html .mod-linux .mod-root {
+  --frame-right-space: var(--rightFrameSetTo);
+}
+
+html .mod-windows:not(.disableRightTitlebarOffset) .mod-right-split,
+html .mod-linux:not(.disableRightTitlebarOffset) .mod-right-split {
+  --frame-right-space: var(--rightFrameSetTo);
+}
+
+html .mod-windows.disableRightTitlebarOffset .mod-right-split,
+html .mod-linux.disableRightTitlebarOffset .mod-right-split {
+  --frame-right-space: 0px;
+}
+
+html .mod-windows:not(.stackTabs) .mod-root,
+html .mod-linux:not(.stackTabs) .mod-root {
+  --frame-right-space: 0px;
+}
+
+html .mod-windows.stackTabs .mod-root,
+html .mod-linux.stackTabs .mod-root {
+  --frame-right-space: 0px;
+}
+
+html .mod-windows:not(.stackTabs):not(.disableRightTitlebarOffset) .mod-root .mod-top-right-space,
+html .mod-linux:not(.stackTabs):not(.disableRightTitlebarOffset) .mod-root .mod-top-right-space {
+  --frame-right-space: var(--rightFrameSetTo);
+}
+
+.stackTabs .workspace:has(.mod-right-split.is-sidedock-collapsed) .workspace-tab-container .workspace-leaf .view-header {
+  --frame-right-space: var(--rightFrameSetTo);
+  margin-right: var(--frame-right-space);
+}
+
+.nav-header {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+.nav-header .nav-buttons-container {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+.nav-header .nav-buttons-container .clickable-icon {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: var(--sidebarDashboardHeight);
+  flex-grow: 1;
+}
+
+body:not(.disableFastClose) .workspace-split.mod-horizontal.mod-left-split.is-sidedock-collapsed {
+  display: none !important;
+}
+
+body:not(.disableFastClose) .workspace-split.mod-horizontal.mod-right-split.is-sidedock-collapsed {
+  display: none !important;
+}
+
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  gap: 0px;
+  height: var(--sidebarTabHeight);
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container .workspace-tab-header-container-inner {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: 100%;
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header {
+  flex-grow: 1;
+  height: var(--sidebarTabHeight);
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header-inner {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  display: flex;
+  flex: 1 1 1px;
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tab-header-container .workspace-tab-header-tab-list {
+  display: none;
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container {
+  height: calc(var(--sidebarTabHeight) + var(--dragSpaceHeight));
+}
+:is(.mod-left-split, .mod-right-split) .workspace-tabs.mod-top .workspace-tab-header-container .workspace-tab-header-container-inner {
+  margin-top: var(--dragSpaceHeight);
+}
+
+.is-hidden-frameless:not(.is-fullscreen) .mod-right-split .workspace-tabs.mod-top-right-space .workspace-tab-header-container,
+.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
+  padding-right: 0px;
+  margin-right: var(--frame-right-space);
+}
+
+.workspace-tabs.mod-top-right-space .workspace-tab-header-container:after {
+  display: none;
+}
+
+.cornerDragLocation .mod-left-split .workspace-tab-header-container-inner {
+  margin-left: 40px;
+}
+
+body:not(.disableExtendRightSidebarMinimum) .mod-right-split {
+  min-width: 260px;
+}
+
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  gap: 0px;
+  gap: 0px;
+}
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: 40px;
+}
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher .workspace-drawer-vault-switcher-icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-actions span {
+  width: 40px;
+  height: 40px;
+}
+
+.body.is-frameless.is-hidden-frameless .titlebar {
+  height: var(--titlebarButtonHeight);
+}
+
+.titlebar-button-container.mod-right {
+  height: var(--titlebarButtonHeight);
+}
+.titlebar-button-container.mod-right .titlebar-button {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: var(--titlebarButtonWidth);
+  height: var(--titlebarButtonHeight);
+}
+.titlebar-button-container.mod-right .titlebar-button svg {
+  margin: auto;
+}
+
+.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-right-space .workspace-split.mod-horizontal.mod-right-split .workspace-tab-header-container {
+  padding-right: 0px;
+  margin-right: var(--titlebarButtonWidth);
+}
+
+.titlebar-inner,
+.is-focused .titlebar-inner {
+  color: var(--icon-color);
+}
+
+body:not(.qe-title-center):not(.qe-title-hide) .titlebar-text.qe-replacement,
+.titlebar-text {
+  padding-right: calc(var(--rightFrameSetTo) + 5px);
+}
+
+.titlebar-button-container.mod-right {
+  app-region: no-drag;
+}
+
+.workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
+  height: calc(var(--editorTabHeight) + var(--dragSpaceHeight));
+}
+.workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container .workspace-tab-header-container-inner {
+  margin-top: var(--dragSpaceHeight);
+}
+.workspace .mod-root .workspace-tab-header-container {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  border-bottom: 0px;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: var(--editorTabHeight);
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  height: var(--editorTabHeight);
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner::after {
+  width: 0px;
+  height: 0px;
+  background-color: transparent;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-title {
+  margin-left: 5px;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-close-button {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  min-width: 40px;
+  height: 100%;
+  display: none;
+  position: absolute;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-close-button svg {
+  margin: auto;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-close-button:hover {
+  background-color: var(--background-modifier-hover);
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header:hover .workspace-tab-header-inner:not(:has(.mod-pinned)), .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header.is-active .workspace-tab-header-inner:not(:has(.mod-pinned)) {
+  padding-right: 0px;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header:hover .workspace-tab-header-inner .workspace-tab-header-inner-close-button, .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header.is-active .workspace-tab-header-inner .workspace-tab-header-inner-close-button {
+  display: flex;
+  position: static;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header::before {
+  width: 0px;
+  height: 0px;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header::after {
+  width: 0px;
+  height: 0px;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-tab-list {
+  display: none;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-new-tab {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  align-items: flex-end;
+}
+.workspace .mod-root .workspace-tab-header-container .workspace-tab-header-new-tab .clickable-icon {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  width: var(--editorTabHeight);
+  height: var(--editorTabHeight);
+}
+
+.disableXButtons .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner {
+  padding-right: 3px;
+}
+.disableXButtons .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-close-button {
+  display: none !important;
+}
+
+.is-hidden-frameless:not(.is-fullscreen) .workspace-tabs.mod-top-left-space .workspace-tab-header-container {
+  padding-left: 0px;
+}
+
+.tabTitleWordWrap .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-title {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.tabTitleCentered .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-title {
+  margin-left: 0px;
+  text-align: center;
+}
+
+.workspace-tabs:not(.mod-top) {
+  --dragSpaceHeight: 0px;
+}
+
+body:not(.stackTabs).editorDragSpace .mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-new-tab {
+  margin-right: 40px;
+}
+
+.is-hidden-frameless:not(.is-fullscreen):not(.mod-macos) .workspace-tabs.mod-top-right-space .workspace-tab-header-container:after {
+  --frame-right-space: 0px;
+  width: 0px;
+}
+
+.stackTabs .workspace .mod-root .workspace-tabs {
+  flex-direction: row;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-spacer {
+  flex-grow: 0;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) {
+  height: 100%;
+  flex-direction: column;
+  background-color: var(--background-secondary);
+  padding-right: 0px;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-new-tab {
+  margin-left: 0px;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-new-tab .clickable-icon {
+  width: 100%;
+  height: var(--editorTabHeightStack);
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-container-inner {
+  --animation-dur: 0ms !important;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: left;
+  align-items: flex-start;
+  margin-top: 0px;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-container-inner .workspace-tab-header {
+  flex-basis: 0px;
+  height: 0px;
+  max-height: var(--editorTabHeightStack);
+  max-width: var(--editorStackWidth);
+  flex-grow: 1;
+  min-width: 0px;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner {
+  flex-grow: 1;
+  height: 100%;
+}
+.stackTabs .workspace .mod-root .workspace-tabs .workspace-tab-header-container:nth-of-type(1) .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-title {
+  margin-left: 5%;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 40px;
+  flex-shrink: 1;
+}
+
+.disableXButtons.stackTabs .workspace .mod-root .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-close-button {
+  display: none !important;
+}/*# sourceMappingURL=sSquareUI.css.map */

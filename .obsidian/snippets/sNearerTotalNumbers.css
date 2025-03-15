@@ -1,0 +1,37 @@
+/* 
+	Nearer Total Numbers
+	This modifies how the number in the search, tags, backlinks/outlinks, etc works. 
+	It moves it to the left	alongside the text, which makes it easier and less ambiguous which number belongs to which word.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+.tree-item-self .tree-item-icon {
+  order: 0;
+}
+.tree-item-self .tree-item-flair-outer {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  order: 1;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.tree-item-self .tree-item-flair-outer .tree-item-flair {
+  font-size: var(--outlineLevelFontSize);
+  color: var(--text-normal);
+}
+.tree-item-self .tree-item-inner {
+  order: 2;
+}
+
+.workspace-leaf-content[data-type=search] .tree-item-self:has(.tree-item-icon) .tree-item-flair::after {
+  position: relative;
+  content: ":";
+}/*# sourceMappingURL=sNearerTotalNumbers.css.map */

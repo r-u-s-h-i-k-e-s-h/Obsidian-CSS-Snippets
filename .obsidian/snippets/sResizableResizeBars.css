@@ -1,0 +1,97 @@
+/* 
+	Resizable Resize Bars
+	This snippet allows for a configurable width on the "resize handles" that determine the width of the sidebars.
+	Why? It's very precise to click the handles normally. If you do that often, you might find it a useful quality-of-life improvement.
+	Width value can be configured with Style Settings.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+body .app-container {
+  --handleSize: 20px;
+}
+
+/* @settings
+name: Resize Bars
+id: ResizeBars
+settings:
+	-
+		id: handleSize
+		title: Resize Bars Size
+		description: The size of the resize bars for each of the sidebars.
+		type: variable-number-slider
+		default: 16
+		min: 4
+		max: 30
+		step: 2
+		format: px
+*/
+/* Resize Bars */
+body {
+  --divider-width: var(--handleSize);
+}
+
+.workspace-split.mod-horizontal.mod-left-split > *:not(hr) {
+  padding-right: var(--handleSize);
+}
+
+.workspace-split.mod-horizontal.mod-right-split > *:not(hr) {
+  padding-left: var(--handleSize);
+}
+
+.mod-left-split .workspace-tabs {
+  padding-bottom: var(--handleSize);
+}
+
+.mod-right-split .workspace-tabs {
+  padding-bottom: var(--handleSize);
+}
+
+.workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-actions {
+  margin-right: calc(var(--handleSize));
+}
+
+.workspace-ribbon.side-dock-ribbon {
+  border-right: 0px;
+}
+
+.mod-right-split .workspace-tabs:last-of-type,
+.mod-left-split .workspace-tabs:last-of-type {
+  padding-bottom: 0;
+}
+
+/* Vertical */
+.mod-left-split > hr,
+.mod-right-split > hr {
+  width: var(--handleSize) !important;
+  right: calc(0 - var(--handleSize));
+  box-sizing: border-box;
+  display: flex;
+  z-index: 99;
+  color: transparent;
+}
+
+/* Vertical */
+.mod-left-split > hr:hover,
+.mod-right-split > hr:hover {
+  color: var(--divider-color-hover);
+}
+
+/* Horizontal */
+.mod-horizontal > div > hr:not(.mod-root hr) {
+  display: flex;
+  width: 100% !important;
+  height: var(--handleSize) !important;
+  flex-direction: column-reverse;
+  border-bottom: 0px !important;
+}
+
+.mod-root .workspace-leaf-resize-handle {
+  --divider-width: 3px;
+}/*# sourceMappingURL=sResizableResizeBars.css.map */

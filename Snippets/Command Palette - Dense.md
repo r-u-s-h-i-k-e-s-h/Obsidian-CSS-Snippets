@@ -1,0 +1,61 @@
+↪[Collection](Collection.md)
+
+# Dense Prompt
+
+---
+
+- author:: ThisTheThe
+- source:: https://github.com/ThisTheThe/MicroMike
+
+#MicroMike 
+
+---
+
+To try it out: Enable the snippet "sDensePrompt".
+
+cover:: ![](https://i.imgur.com/e8UW9p6.png) 
+
+```
+/* 
+	Dense Prompt
+	This modifies the prompt window (Ctrl+P) to be more dense; this allows it to display more results.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+.modal-container .prompt .prompt-input-container {
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.modal-container .prompt .prompt-input-container input.prompt-input {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: var(--font-text-size);
+}
+.modal-container .prompt .prompt-results {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+.modal-container .prompt .prompt-results .suggestion-item {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  padding-left: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.modal-container .prompt .prompt-results .suggestion-item.mod-complex {
+  justify-content: flex-start;
+}/*# sourceMappingURL=sDensePrompt.css.map */
+```

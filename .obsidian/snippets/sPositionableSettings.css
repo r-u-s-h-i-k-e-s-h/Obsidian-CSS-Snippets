@@ -1,0 +1,179 @@
+/* 
+	Positionable Settings
+	Intended with Style Settings
+	This allows for granular control of the size and position of the settings window.
+	Options: 
+	* Which corner to anchor in, or centered
+	* Height/width in percentages
+	* X/Y offsets in pixels
+	* Minimum width in pixels
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+body {
+  --settingsHSize: 100%;
+  --settingsWSize: 60%;
+  --settingsOffsetX: 0px;
+  --settingsMinWidth: 800px;
+}
+
+/* @settings
+name: Settings Positioning
+id: SettingsPositioning
+settings:
+	-
+		id: settingsAlignment
+		title: Settings Alignment
+		description: Pick the compass direction that the generic (file seeking, etc...) settings is aligned to.
+		type: class-select
+		allowEmpty: false
+		default: settingsWAlign
+		options:
+			- 
+                label: Centered
+                value: settingsCAlign
+            - 
+                label: North
+                value: settingsNAlign
+			- 
+                label: Northeast
+                value: settingsNEAlign
+            - 
+                label: East
+                value: settingsEAlign
+			- 
+                label: Southeast
+                value: settingsSEAlign
+            - 
+                label: South
+                value: settingsSAlign
+			- 
+                label: Southwest
+                value: settingsSWAlign
+            - 
+                label: West
+                value: settingsWAlign
+			- 
+                label: Northwest
+                value: settingsNWAlign
+	-
+		id: settingsHSize
+		title: Settings Height
+		description: In percentage, choose the height of the settings.
+		type: variable-number-slider
+		default: 100
+		min: 35
+		max: 100
+		step: 5
+		format: "%"
+	-
+		id: settingsWSize
+		title: Settings Width
+		description: In percentage, choose the width of the settings.
+		type: variable-number-slider
+		default: 60
+		min: 50
+		max: 100
+		step: 5
+		format: "%"
+	-
+		id: settingsOffsetX
+		title: Settings X Offset
+		description: Choose an X offset for the settings. If uncarefully applied, will cause it to move offscreen.
+		type: variable-number-slider
+		default: 0
+		min: -520
+		max: 520
+		step: 40
+		format: px
+	-
+		id: settingsOffsetY
+		title: Settings Y Offset
+		description: Choose a Y offset for the settings. If uncarefully applied, will cause it to move offscreen.
+		type: variable-number-slider
+		default: 0
+		min: -500
+		max: 500
+		step: 10
+		format: px
+	-
+		id: settingsMinWidth
+		title: Settings Min Width
+		description: The settings window is not allowed to become any smaller than this size. The max size is defined by the above setting.
+		type: variable-number-slider
+		default: 800
+		min: 500
+		max: 1200
+		step: 10
+		format: px
+*/
+body:not(.css-settings-manager):not(.is-mobile) .modal-container:has(> .mod-settings) {
+  align-items: flex-start;
+}
+body:not(.css-settings-manager):not(.is-mobile) .modal-container:has(> .mod-settings) .modal.mod-settings {
+  margin-left: 40px;
+  height: 100%;
+  width: 90%;
+  min-width: var(--settingsMinWidth);
+}
+
+body:not(.is-mobile) .css-settings-manager .modal-container:has(> .mod-settings) {
+  align-items: center;
+  justify-content: center;
+}
+
+.css-settings-manager:not(.is-mobile) .modal.mod-settings {
+  position: absolute;
+  top: unset;
+  left: unset;
+  min-width: unset;
+  min-height: var(--settingsHSize);
+  max-height: var(--settingsHSize);
+  min-width: var(--settingsMinWidth);
+  max-width: var(--settingsWSize);
+  margin-left: calc(var(--settingsOffsetX) + 40px);
+  margin-bottom: var(--settingsOffsetY);
+}
+
+:not(.is-mobile).settingsNAlign .modal.mod-settings {
+  top: 0%;
+}
+
+:not(.is-mobile).settingsNEAlign .modal.mod-settings {
+  top: 0%;
+  right: 0%;
+}
+
+:not(.is-mobile).settingsEAlign .modal.mod-settings {
+  right: 0%;
+}
+
+:not(.is-mobile).settingsSEAlign .modal.mod-settings {
+  bottom: 0%;
+  right: 0%;
+}
+
+:not(.is-mobile).settingsSAlign .modal.mod-settings {
+  bottom: 0%;
+}
+
+:not(.is-mobile).settingsSWAlign .modal.mod-settings {
+  bottom: 0%;
+  left: 0%;
+}
+
+:not(.is-mobile).settingsWAlign .modal.mod-settings {
+  left: 0%;
+}
+
+:not(.is-mobile).settingsNWAlign .modal.mod-settings {
+  top: 0%;
+  left: 0%;
+}/*# sourceMappingURL=sPositionableSettings.css.map */

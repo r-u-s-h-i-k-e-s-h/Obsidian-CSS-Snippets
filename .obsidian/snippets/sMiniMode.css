@@ -1,0 +1,36 @@
+/* 
+	Mini Mode
+	Turn Obsidian into a convenient little notepad - just by resizing it.
+	This snippet will cause the sidebars, title bar, and status bar to disappear when the window below a certain width.
+	You'll have to change the minimum width that the "mini mode" activates at to your preference manually - this can't be changed in Style Settings due to CSS limitations.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+@media only screen and (max-width: 900px) {
+  body:not(.disableMiniMode) .mod-right-split {
+    display: none;
+  }
+  body:not(.disableMiniMode) .mod-left-split {
+    display: none;
+  }
+  body:not(.disableMiniMode) .workspace-ribbon {
+    display: none;
+  }
+  body:not(.disableMiniMode) .status-bar {
+    display: none;
+  }
+  body:not(.disableMiniMode) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
+    --frame-right-space: var(--rightFrameSetTo);
+    margin-right: var(--frame-right-space);
+  }
+  body.stackTabs:not(.disableMiniMode) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
+    margin-right: 0px;
+  }
+}/*# sourceMappingURL=sMiniMode.css.map */
