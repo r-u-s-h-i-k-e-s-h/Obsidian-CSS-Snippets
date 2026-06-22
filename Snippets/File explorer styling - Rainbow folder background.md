@@ -135,3 +135,20 @@ cover:: ![](https://i.imgur.com/zjZHS82.png)
   --folder-color: rgb(203, 166, 247);
 }
 ```
+
+## Dark Theme Variant
+
+The `--nav-item-color` variable is not picked up by all text elements in dark themes. Add these explicit overrides after the main snippet to ensure contrast:
+
+```css
+.nav-files-container > div > .nav-folder .nav-folder-title-content,
+.nav-files-container > div > .nav-folder .nav-file-title-content,
+.nav-files-container > div > .nav-folder .nav-folder-title,
+.nav-files-container > div > .nav-folder .nav-file-title {
+  color: #1a1a1a !important;
+}
+
+.nav-files-container > div > .nav-folder svg {
+  color: #1a1a1a !important;
+  stroke: #1a1a1a !important;
+}
