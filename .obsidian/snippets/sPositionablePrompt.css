@@ -1,0 +1,169 @@
+/* 
+	Positionable Prompt
+	Intended with Style Settings
+	This allows for granular control of the size and position of the prompt (Ctrl+P) window.
+	Options: 
+	* Which corner to anchor in, or centered
+	* Height/width in percentages
+	* X/Y offsets in pixels
+	* Minimum width in pixels
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+body {
+  --modalOffsetX: 250px;
+  --modalMinWidth: 600px;
+}
+
+/* @settings
+name: Prompt Positioning
+id: PromptPositioning
+settings:
+	-
+		id: modalAlignment
+		title: Prompt Alignment
+		description: Pick the compass direction that the generic (file seeking, etc...) prompt is aligned to.
+		type: class-select
+		allowEmpty: false
+		default: modalSAlign
+		options:
+			- 
+                label: Centered
+                value: modalCAlign
+            - 
+                label: North
+                value: modalNAlign
+			- 
+                label: Northeast
+                value: modalNEAlign
+            - 
+                label: East
+                value: modalEAlign
+			- 
+                label: Southeast
+                value: modalSEAlign
+            - 
+                label: South
+                value: modalSAlign
+			- 
+                label: Southwest
+                value: modalSWAlign
+            - 
+                label: West
+                value: modalWAlign
+			- 
+                label: Northwest
+                value: modalNWAlign
+	-
+		id: modalHSize
+		title: Prompt Height
+		description: In percentage, choose the height of the prompt.
+		type: variable-number-slider
+		default: 50
+		min: 20
+		max: 100
+		step: 5
+		format: "%"
+	-
+		id: modalWSize
+		title: Prompt Width
+		description: In percentage, choose the width of the prompt.
+		type: variable-number-slider
+		default: 35
+		min: 20
+		max: 100
+		step: 5
+		format: "%"
+	-
+		id: modalOffsetX
+		title: Prompt X Offset
+		description: Choose an X offset for the prompt. If uncarefully applied, will cause it to move offscreen.
+		type: variable-number-slider
+		default: 250
+		min: -1000
+		max: 1000
+		step: 25
+		format: px
+	-
+		id: modalOffsetY
+		title: Prompt Y Offset
+		description: Choose a Y offset for the prompt. If uncarefully applied, will cause it to move offscreen.
+		type: variable-number-slider
+		default: 0
+		min: -500
+		max: 500
+		step: 10
+		format: px
+	-
+		id: modalMinWidth
+		title: Prompt Min Width
+		description: The prompt window is not allowed to become any smaller than this size. The max size is defined by the above setting.
+		type: variable-number-slider
+		default: 300
+		min: 200
+		max: 1200
+		step: 10
+		format: px
+*/
+body:not(.is-mobile) .modal-container .prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50%;
+}
+
+.css-settings-manager:not(.is-mobile) .modal-container .prompt {
+  position: absolute;
+  top: unset;
+  left: unset;
+  min-height: var(--modalHSize);
+  max-height: var(--modalHSize);
+  min-width: var(--modalMinWidth);
+  width: var(--modalWSize);
+  max-width: var(--modalWSize);
+  margin-left: var(--modalOffsetX);
+  margin-bottom: var(--modalOffsetY);
+}
+
+:not(.is-mobile).modalNAlign .modal-container .prompt {
+  top: 0%;
+}
+
+:not(.is-mobile).modalNEAlign .modal-container .prompt {
+  top: 0%;
+  right: 0%;
+}
+
+:not(.is-mobile).modalEAlign .modal-container .prompt {
+  right: 0%;
+}
+
+:not(.is-mobile).modalSEAlign .modal-container .prompt {
+  bottom: 0%;
+  right: 0%;
+}
+
+:not(.is-mobile).modalSAlign .modal-container .prompt {
+  bottom: 0%;
+}
+
+:not(.is-mobile).modalSWAlign .modal-container .prompt {
+  bottom: 0%;
+  left: 0%;
+}
+
+:not(.is-mobile).modalWAlign .modal-container .prompt {
+  left: 0%;
+}
+
+:not(.is-mobile).modalNWAlign .modal-container .prompt {
+  top: 0%;
+  left: 0%;
+}/*# sourceMappingURL=sPositionablePrompt.css.map */

@@ -1,0 +1,89 @@
+/* 
+	Dense Settings
+	This makes the settings (both the sidebar and main section) more dense, allowing for more information to be displayed. 
+	Why? It can often be obnoxious navigating the normal Obsidian settings, which give an excess of spacing to the detriment of seeing the full picture.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+.modal.mod-settings .vertical-tab-header {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.modal.mod-settings .vertical-tab-header .vertical-tab-header-group {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+}
+.modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-title, .modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-items {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  font-size: 18px;
+  margin-top: 5px;
+  color: var(--text-normal);
+}
+.modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-title .vertical-tab-nav-item, .modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-items .vertical-tab-nav-item {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  border-bottom: 1px solid var(--separatorColorSettings);
+  padding: 1px;
+  padding-left: 5px;
+}
+.modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-title .vertical-tab-nav-item:last-of-type, .modal.mod-settings .vertical-tab-header .vertical-tab-header-group .vertical-tab-header-group-items .vertical-tab-nav-item:last-of-type {
+  border-bottom: 0px;
+}
+.modal.mod-settings .vertical-tab-content {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  padding-left: 5px;
+}
+.modal.mod-settings .setting-item {
+  padding: 0px;
+  margin: 0px;
+  gap: 0px;
+  border-top: 1px solid var(--levelLayer);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.modal.mod-settings .setting-item .setting-item-info .setting-item-description {
+  padding-top: 0px;
+}
+.modal.mod-settings .setting-item .setting-item-control {
+  gap: 5px;
+  margin-right: 10px;
+}
+.modal.mod-settings .setting-item .setting-item-control .dropdown, .modal.mod-settings .setting-item .setting-item-control .search-input-container {
+  text-wrap: wrap;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+}
+body:not(.disableLeftAlignSettings) .modal.mod-settings :is(h1, h2, h3, h4, h5, h6) {
+  padding-left: calc(var(--settingsLeftColumnLength) - 20px);
+}
+body:not(.disableLeftAlignSettings) .modal.mod-settings :is(h1, h2, h3, h4, h5, h6) .setting-item-name {
+  margin-left: 10px;
+}
+.modal.mod-settings :is(h1, h2, h3, h4, h5, h6, .setting-item-heading) {
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height: 26px;
+  background: var(--settingsHeaderGradient);
+}
+.modal.mod-settings :is(h1, h2, h3, h4, h5, h6, .setting-item-heading) .setting-item-name {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.modal.mod-settings :is(h1, h2, h3, h4, h5, h6, .setting-item-heading) .setting-item-control {
+  min-width: calc(var(--settingsLeftColumnLength) - 30px) !important;
+}/*# sourceMappingURL=sDenseSettings.css.map */

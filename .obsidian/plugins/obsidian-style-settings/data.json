@@ -38,5 +38,6 @@
   "chime-theme@@underlined-highlight": false,
   "chime-theme@@increased-line-height": false,
   "chime-theme@@custom-font-toggle": true,
-  "chime-theme@@custom-font": "Merriweather"
+  "chime-theme@@custom-font": "Merriweather",
+  "ScrollBar@@settingsLeftColumnLength": 200
 }

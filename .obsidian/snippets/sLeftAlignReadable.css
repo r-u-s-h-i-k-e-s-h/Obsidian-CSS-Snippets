@@ -1,0 +1,50 @@
+/* 
+	Left Aligned Readable Line Length
+	This snippet will cause the sidebars, title bar, and status bar to disappear when the window is a certain width.
+	It is advised the user change the minimum width that the "mini mode" activates to their preference manually - this can't be changed in GUI due to CSS limitations.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike. 
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung". 
+*/
+/* @settings
+name: Left Align Readable Line Length
+id: leftAlignReadable
+settings:
+	-
+		id: disableLeftAlignReadable
+		title: Disable Left Align
+		description: The text area will be centered instead.
+		type: class-toggle
+		default: true
+	-
+		id: file-line-width
+		title: Text Window Length
+		description: Size of text window in text editor. 
+		type: variable-number-slider
+		default: 700
+		min: 300
+		max: 1800
+		step: 50
+		format: px
+*/
+.cm-sizer, .markdown-preview-sizer {
+  max-width: var(--file-line-width);
+}
+
+body:not(.disableLeftAlignReadable) .markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
+body:not(.disableLeftAlignReadable) .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+body.disableLeftAlignReadable .markdown-preview-view .markdown-preview-sizer,
+body.disableLeftAlignReadable .markdown-source-view.mod-cm6 .cm-sizer {
+  margin-left: auto;
+  margin-right: auto;
+}/*# sourceMappingURL=sLeftAlignReadable.css.map */
