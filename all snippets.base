@@ -1,0 +1,13 @@
+views:
+  - type: cards
+    name: Table
+    filters:
+      and:
+        - file.folder == "snippets"
+    order:
+      - file.name
+      - author
+    image: note.cover
+    imageAspectRatio: 0.8
+    cardSize: 300
+    imageFit: contain

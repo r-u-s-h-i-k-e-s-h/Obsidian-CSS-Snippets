@@ -1,5 +1,5 @@
 {
-  "accentColor": "",
-  "cssTheme": "🔔 Chime",
-  "baseFontSize": 17
+  "enabledCssSnippets": [
+    "custom-styling"
+  ]
 }

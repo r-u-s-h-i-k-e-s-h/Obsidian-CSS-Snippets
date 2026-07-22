@@ -1,36 +1,25 @@
 {
   "main": {
-    "id": "7bbff34bb0533f24",
+    "id": "99ccf4ccc1849fd9",
     "type": "split",
     "children": [
       {
-        "id": "2566e214125b5fec",
+        "id": "38a277aed0094c86",
         "type": "tabs",
         "children": [
           {
-            "id": "542c313f773a8de5",
+            "id": "1127e719dd4c32b9",
             "type": "leaf",
             "pinned": true,
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "Collection.md",
-                "mode": "preview",
-                "source": false
+                "file": "all snippets.base",
+                "viewName": "Table"
               },
-              "pinned": true
-            }
-          },
-          {
-            "id": "49838a775dc98e0d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              }
+              "pinned": true,
+              "icon": "lucide-layout-grid",
+              "title": "all snippets"
             }
           }
         ]
@@ -39,25 +28,28 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "bb61bd438af99114",
+    "id": "ab7f46ffb5d5282c",
     "type": "split",
     "children": [
       {
-        "id": "60d9168d287e034e",
+        "id": "e1214e1d2692b868",
         "type": "tabs",
         "children": [
           {
-            "id": "2e82ba6254f0c2b4",
+            "id": "059a235802b2aa8e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
-            "id": "c2d35e4ad469ffb5",
+            "id": "3681349766ac3f1f",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -68,39 +60,42 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "39a79074a99bad8c",
+            "id": "8b20e7b59c06f0d7",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 297.50550842285156,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "96a444775a89a0c6",
+    "id": "8c47618978206182",
     "type": "split",
     "children": [
       {
-        "id": "3829c84ae75cba88",
+        "id": "52b0d392f862fcfd",
         "type": "tabs",
         "children": [
           {
-            "id": "5a0ebc6dc0c2d0f6",
+            "id": "0b07a977e09606cf",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Collection.md",
+                "file": "all snippets.base",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,40 +103,67 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for all snippets"
             }
           },
           {
-            "id": "2f856161313deb5f",
+            "id": "6dc3b15952fefe3a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Collection.md",
+                "file": "all snippets.base",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from all snippets"
             }
           },
           {
-            "id": "b7edaa4f64cb6f08",
+            "id": "bf52c3b63dab399e",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
-            "id": "cb5b1e9384e733d8",
+            "id": "3bde0362dcf2af0e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f4b7a9807928fcea",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Collection.md"
-              }
+                "file": "all snippets.base",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of all snippets"
             }
           }
         ]
@@ -158,15 +180,15 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
     }
   },
-  "active": "542c313f773a8de5",
+  "active": "1127e719dd4c32b9",
   "lastOpenFiles": [
     "README.md",
-    "Snippets/Banner.md",
-    "Collection.md",
-    "Snippets/Accented settings side headings.md",
-    "Snippets/Author callout.md"
+    "all snippets.base",
+    "img-cover.webp",
+    "img-cover.png"
   ]
 }

@@ -1,0 +1,63 @@
+---
+author: ThisTheThe
+source: https://github.com/ThisTheThe/MicroMike
+cover: "[[img-workspace - resize scroll bar.webp]]"
+obsidian-version: 1.12.7
+installer-version: 1.12.7
+dependencies:
+  - style-settings
+---
+# Workspace - resize scroll bar
+
+![](../attachments/img-workspace%20-%20resize%20scroll%20bar.webp)
+
+## Snippet
+
+```css
+/*
+	Resizable Scroll Bar
+	This snippet allows for you to configure the width of the scrollbar.
+	Why? It can be precise to click the scrollbar. If you use it often, you might find adding this makes your workflow more efficient.
+	Width value can be configured with Style Settings.
+*/
+/*
+	Author: ThisTheThe
+	Source: github.com/ThisTheThe/MicroMike
+	Version: 03/11/2025
+	This is a componentized version of a portion of Micro Mike.
+	If you like what you see here, you might like the theme.
+
+	Feel free to give feedback on the theme page, or on Discord - I can be reached at "liblung".
+*/
+body {
+  --scrollBarSize: 20px;
+}
+
+/* @settings
+name: Scroll Bar
+id: ScrollBar
+settings:
+	-
+		id: scrollBarSize
+		title: Scroll Bar Size
+		description: The width of the scrollbar on the side.
+		type: variable-number-slider
+		default: 16
+		min: 4
+		max: 30
+		step: 2
+		format: px
+*/
+body:not(.native-scrollbars) .kanban-plugin__scroll-container::-webkit-scrollbar,
+body:not(.native-scrollbars) .prompt-results::-webkit-scrollbar,
+body:not(.native-scrollbars) ::-webkit-scrollbar {
+  width: var(--scrollBarSize);
+  border: 0px;
+}
+
+.body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
+  border: 0px;
+}
+
+/*# sourceMappingURL=sResizableScrollbar.css.map */
+```
